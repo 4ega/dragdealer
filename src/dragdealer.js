@@ -397,11 +397,13 @@ Dragdealer.prototype = {
     this.cancelAnimationFrame(this.interval);
   },
   onHandleMouseDown: function(e) {
-    Cursor.refresh(e);
-    preventEventDefaults(e);
-    stopEventPropagation(e);
-    this.activity = false;
-    this.startDrag();
+    if (e.target.tagName !== 'INPUT') {
+      Cursor.refresh(e);
+      preventEventDefaults(e);
+      stopEventPropagation(e);
+      this.activity = false;
+      this.startDrag();
+    }
   },
   onHandleTouchStart: function(e) {
     Cursor.refresh(e);
@@ -438,9 +440,11 @@ Dragdealer.prototype = {
     this.activity = true;
   },
   onWrapperMouseDown: function(e) {
-    Cursor.refresh(e);
-    preventEventDefaults(e);
-    this.startTap();
+    if (e.target.tagName !== 'INPUT') {
+      Cursor.refresh(e);
+      preventEventDefaults(e);
+      this.startTap();
+    }
   },
   onWrapperTouchStart: function(e) {
     Cursor.refresh(e);
