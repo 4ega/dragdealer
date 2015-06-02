@@ -397,7 +397,7 @@ Dragdealer.prototype = {
     this.cancelAnimationFrame(this.interval);
   },
   onHandleMouseDown: function(e) {
-    if (e.target.tagName !== 'INPUT') {
+    if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
       Cursor.refresh(e);
       preventEventDefaults(e);
       stopEventPropagation(e);
@@ -440,7 +440,7 @@ Dragdealer.prototype = {
     this.activity = true;
   },
   onWrapperMouseDown: function(e) {
-    if (e.target.tagName !== 'INPUT') {
+    if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
       Cursor.refresh(e);
       preventEventDefaults(e);
       this.startTap();
